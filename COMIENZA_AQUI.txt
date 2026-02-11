@@ -1,0 +1,180 @@
+╔════════════════════════════════════════════════════════════════╗
+║                DALE VOZ A SU SERVILLETA™                       ║
+║               (La forma más fácil de activar la voz)           ║
+╚════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3 PASOS SOLAMENTE:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: OBTÉN TU AZURE KEY (2 minutos)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre en navegador:
+https://azure.microsoft.com/en-us/free/
+
+- Clic en "Empezar gratis"
+- Crea cuenta con tu email
+- NO REQUIERE TARJETA DE CRÉDITO ✓
+- Recibes $200 de crédito por 30 días
+
+Una vez en Azure Portal:
+1. Busca "Cognitive Services"
+2. Create new "Speech" resource
+3. En "Keys and Endpoint", copia la KEY 1
+4. Recuerda también la Region (ej: eastus)
+
+┌─────────────────────────────────────┐
+│ KEY 1: abc123def456...              │
+│ REGION: eastus                      │
+└─────────────────────────────────────┘
+
+GUARDA ESTOS DATOS en un bloc de notas.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 2: EJECUTA EL SETUP AUTOMÁTICO (1 minuto)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre el explorador:
+C:\Users\Administrador\Documents\landing page
+
+Busca el archivo:
+butler-voice-setup.bat
+
+Doble clic en él.
+
+┌──────────────────────────────────────┐
+│ Se abrirá una ventana negra (CMD)    │
+│ Espera a que aparezca:               │
+│                                      │
+│ "Pegue su Azure Speech API Key:"     │
+└──────────────────────────────────────┘
+
+PEGA TU KEY (copia de Azure Portal)
+y presiona ENTER
+
+El script automáticamente:
+✓ Instala dependencias
+✓ Configura tu key
+✓ Inicia el servidor con voz
+
+Verás:
+✓ Azure Butler Voice initialized
+✓ Butler CRM Server running on port 3000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 3: USA LA VOZ (1 minuto)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre tu navegador y ve a:
+http://localhost:3000
+
+En el sitio que aparece:
+1. Haz clic en "📋 Órdenes"
+2. Verás una tabla con órdenes
+3. En la columna "Acciones", hay un botón: 🔊
+4. ¡HAZA CLIC EN 🔊!
+
+ESCUCHARÁS A BUTLER LEER LA ORDEN EN ESPAÑOL MEXICANO 🔊
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¡LISTO! Butler está hablando.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRUEBA ADICIONAL: SCALING PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. En otra pestaña, abre:
+   http://localhost:8080
+
+2. Escribe algo como:
+   "Tengo una fuga en el baño"
+
+3. Haz clic en:
+   "Analizar con Gemini AI"
+
+4. Espera la recomendación
+
+5. Aparece el botón:
+   "🔊 Escuchar respuesta"
+
+6. ¡HAZA CLIC!
+
+BUTLER TE LEERÁ LA SOLUCIÓN TÉCNICA 🔊
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿QUÉ PASA SI HAY UN ERROR?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Error: "Voice not configured"
+→ Tu Azure key no fue guardada correctamente
+→ Vuelve a ejecutar: butler-voice-setup.bat
+
+Error: "localhost:3000 refused"
+→ El servidor no está corriendo
+→ Verifica que la ventana anterior sigue abierta
+
+Error: "HTTP 401"
+→ Tu Azure key está expirada o mal copiada
+→ Obtén una nueva desde Azure Portal
+
+Error: "Cannot find module"
+→ Las dependencias no se instalaron
+→ En PowerShell, ejecuta: npm install
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿CÓMO DEJO DE USAR LA VOZ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Simplemente cierra la ventana negra del servidor.
+Ya no hará nada la voz.
+
+Para volver a usar:
+- Abre PowerShell
+- set AZURE_SPEECH_KEY=tu-key
+- node butler-crm-server.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MÁS INFORMACIÓN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Lee estos archivos para más detalles:
+
+BUTLER_VOICE_SETUP.md
+→ Guía detallada de setup
+
+BUTLER_VOICE_IMPLEMENTATION.md
+→ Explicación técnica completa
+
+BUTLER_VOICE_QUICK_START.txt
+→ Guía visual paso a paso
+
+BUTLER_VOICE_STATUS.md
+→ Status completo del proyecto
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¡ESO ES TODO! BUTLER ESTÁ HABLANDO 🗣️
+
+         Butler Voice está listo
+         Español mexicano profesional
+         Sin costo extra (~$0.40/mes)
+         
+         ¡A TRABAJAR! 🔧
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Preguntas? Revisa los archivos .md en la misma carpeta.
+
+Versión: Butler CRM v1.1
+Fecha: 10 Feb 2026
+Status: ✅ LISTO PARA PRODUCCIÓN

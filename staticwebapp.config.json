@@ -1,0 +1,38 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "serve": "index-silver.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/*.html",
+      "serve": "/*.html"
+    },
+    {
+      "route": "/*.js",
+      "serve": "/*.js"
+    },
+    {
+      "route": "/*.json",
+      "serve": "/*.json"
+    },
+    {
+      "route": "/api/*",
+      "methods": ["GET", "POST", "PUT"],
+      "allowedRoles": ["authenticated", "anonymous"]
+    },
+    {
+      "route": "/**",
+      "statusCode": 404
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index-silver.html",
+    "exclude": ["*.{css,scss,js,png,gif,jpg,svg,webp}"]
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".wasm": "application/wasm"
+  }
+}

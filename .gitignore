@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.db
+*.log
+fb_exports/
+.vscode/
+.DS_Store
+dist/
+build/
+bin/
+obj/

@@ -1,0 +1,44 @@
+{
+  "name": "plomerocancun",
+  "version": "1.0.0",
+  "description": "@PLOMEROCANCUN - Premium Plumbing Landing Page + CRM Backend",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "func start",
+    "dev": "npx http-server -c-1 . -p 8080 --cors",
+    "test": "node api/tests/api.test.js",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "az functionapp publish plomerocancun-func --build remote",
+    "fetch-fb": "node fb-fetcher.js"
+  },
+  "keywords": [
+    "plomeria",
+    "cancun",
+    "descaling",
+    "azure",
+    "crm",
+    "whatsapp"
+  ],
+  "author": "@PLOMEROCANCUN",
+  "license": "Proprietary",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "dotenv": "^16.3.1",
+    "express": "^5.2.1",
+    "microsoft-cognitiveservices-speech-sdk": "^1.34.0",
+    "mongodb": "^5.9.0",
+    "node-fetch": "2.6.7",
+    "nodemailer": "^6.9.7",
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "azure-functions-core-tools": "^4.0.5563",
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

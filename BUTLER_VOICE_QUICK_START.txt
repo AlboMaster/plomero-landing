@@ -1,0 +1,323 @@
+🔊 DALE VOZ A BUTLER — QUICK START VISUAL GUIDE
+================================================
+
+                        ╔════════════════════╗
+                        ║   BUTLER HABLA 🔊  ║
+                        ║   Azure TTS Ready  ║
+                        ╚════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN 1: SETUP AUTOMATIZADO (RECOMMENDED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Paso 1: Haz doble clic en butler-voice-setup.bat
+┌─────────────────────────────────────────┐
+│ 📁 Abre el explorador, ve a:            │
+│    C:\Users\Admin\Documents\landing page │
+│ 📄 Busca: butler-voice-setup.bat       │
+│ 🖱️  Doble clic                         │
+└─────────────────────────────────────────┘
+
+Paso 2: El script pregunta por tu Azure Key
+┌─────────────────────────────────────────┐
+│ Script: "Pegue su Azure Speech API Key"  │
+│ Tú: Copia y pega de Azure Portal        │
+└─────────────────────────────────────────┘
+
+Paso 3: Espera a que instale y se inicie
+┌─────────────────────────────────────────┐
+│ Verá: ✓ Butler CRM Server running...    │
+│ Puerto: http://localhost:3000           │
+└─────────────────────────────────────────┘
+
+¡LISTO! Butler está hablando 🗣️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN 2: MANUAL (AVANZADO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: Obtén tu Azure Key (2 minutos)
+────────────────────────────────────
+
+  a) Abre: https://azure.microsoft.com/en-us/free/
+  
+  b) Crea cuenta gratuita (sin tarjeta)
+  
+  c) En Azure Portal:
+     Services > Cognitive Services > Speech
+  
+  d) Copia:
+     ┌─────────────────────────────────┐
+     │ Subscription Key (Clave 1)      │
+     │ Region (ej: eastus)             │
+     └─────────────────────────────────┘
+
+PASO 2: Abre PowerShell en la carpeta del proyecto
+────────────────────────────────────────────────
+
+  Windows:
+  ┌─────────────────────────────────────────┐
+  │ 1. Shift + Clic derecho en carpeta      │
+  │ 2. "Abrir aquí en PowerShell"          │
+  │ 3. Aparece: PS C:\...\landing page>    │
+  └─────────────────────────────────────────┘
+
+PASO 3: Configura tu Azure Key
+───────────────────────────
+
+  En PowerShell, paste esto (con tu key):
+  
+  ┌─────────────────────────────────────────┐
+  │ $env:AZURE_SPEECH_KEY = "TU-KEY-AQUI" │
+  │                                         │
+  │ (Sustituyendo TU-KEY-AQUI con tu llave) │
+  └─────────────────────────────────────────┘
+
+PASO 4: Instala dependencias (primera vez)
+─────────────────────────────────
+
+  ┌─────────────────────────────────────────┐
+  │ npm install                             │
+  └─────────────────────────────────────────┘
+
+PASO 5: Inicia Butler con Voz
+────────────────────────────
+
+  ┌─────────────────────────────────────────┐
+  │ node butler-crm-server.js               │
+  └─────────────────────────────────────────┘
+
+  Veras:
+  ┌─────────────────────────────────────────┐
+  │ ✓ Azure Butler Voice initialized        │
+  │ ✓ Connected to: butler-crm.db          │
+  │ ✓ Butler CRM Server running on port 3000│
+  └─────────────────────────────────────────┘
+
+  ¡ÉXITO! Butler está hablando 🔊
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRUEBA RÁPIDA DE VOZ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre otra pestaña de PowerShell (Ctrl+Shift+N):
+
+  ┌─────────────────────────────────────────┐
+  │ $env:AZURE_SPEECH_KEY = "TU-KEY"       │
+  │ node butler-voice-test.js               │
+  └─────────────────────────────────────────┘
+
+Verás:
+  📢 Test 1: Presentación de Butler
+  ✓ Butler habló
+
+  📢 Test 2: Lectura de orden
+  ✓ Orden leída
+
+  📢 Test 3: Resumen técnico
+  ✓ Resumen técnico leído
+
+  📢 Test 4: Alerta de urgencia
+  ✓ Alerta enviada
+
+  🎉 TODOS LOS TESTS EXITOSOS!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+USA BUTLER CON VOZ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EN EL CRM DASHBOARD:
+────────────────
+
+  1. Abre: http://localhost:3000
+  
+  2. Haz clic en "📋 Órdenes"
+  
+  3. Verás una tabla con órdenes
+  
+  4. En la columna "Acciones", hay un botón: 🔊
+  
+  5. ¡Haz clic! Butler lee la orden completa
+  
+  6. Escucharás en ESPAÑOL MEXICANO profesional 🎤
+
+EN LA LANDING PAGE:
+──────────────────
+
+  1. Abre: http://localhost:8080
+  
+  2. Escribe un problema de plomería:
+     "Hay una fuga en el baño que no para"
+  
+  3. Haz clic en "Analizar con Gemini AI"
+  
+  4. Espera la recomendación
+  
+  5. Aparece un botón: "🔊 Escuchar respuesta"
+  
+  6. ¡Haz clic! Butler te lee la solución técnica
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SOLUCIONAR PROBLEMAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ PROBLEMA: "Voice not configured"
+✅ SOLUCIÓN:
+   Abre PowerShell en la carpeta y ejecuta:
+   $env:AZURE_SPEECH_KEY = "TU-KEY"
+   node butler-crm-server.js
+
+❌ PROBLEMA: "HTTP 401: Missing subscription key"
+✅ SOLUCIÓN:
+   Tu Azure key está mal o expirada
+   - Ve a Azure Portal
+   - Revisa la clave (copiar sin espacios)
+   - Verifica la región (eastus, southcentralus)
+   - Vuelve a intentar
+
+❌ PROBLEMA: "localhost:3000 refused"
+✅ SOLUCIÓN:
+   El servidor CRM no está corriendo
+   - Abre PowerShell
+   - set AZURE_SPEECH_KEY=TU-KEY
+   - node butler-crm-server.js
+
+❌ PROBLEMA: Botón 🔊 no aparece en landing page
+✅ SOLUCIÓN:
+   CRM server en 3000 no está corriendo
+   Verifica que veas "Server running on http://localhost:3000"
+
+❌ PROBLEMA: "TypeError: require('microsoft-cognitiveservices-speech-sdk')"
+✅ SOLUCIÓN:
+   npm install microsoft-cognitiveservices-speech-sdk
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARCHIVOS CREADOS/MODIFICADOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ NEW FILES:
+   butler-azure-tts.js              (Azure TTS client, 120 líneas)
+   butler-voice-setup.bat           (Setup automatizado Windows)
+   butler-voice-test.js             (Prueba rápida de voz)
+   BUTLER_VOICE_SETUP.md            (Guía de setup detallada)
+   BUTLER_VOICE_STATUS.md           (Status report completo)
+   BUTLER_VOICE_QUICK_START.txt     (ESTE ARCHIVO)
+
+✅ UPDATED FILES:
+   butler-crm-server.js             (+60 líneas: endpoints de voz)
+   butler-crm.html                  (+ botón 🔊 en tabla de órdenes)
+   index-silver.html                (+ botón 🔊 para Gemini)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARQUITECTURA BUTLER VOZ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   Navegador (Usuario)
+   ├─ Landing Page (8080)
+   │  └─ Botón 🔊 → Escucha análisis Gemini
+   │
+   └─ CRM Dashboard (3000)
+      └─ Tabla Órdenes
+         └─ Botón 🔊 → Escucha orden completa
+              │
+              └─→ REST API (3000)
+                  │
+                  ├─ POST /api/voice/speak
+                  ├─ GET /api/voice/orden/:id
+                  └─ POST /api/voice/alert
+                       │
+                       └─→ Azure Cognitive Services
+                           (Text-to-Speech)
+                           │
+                           └─→ MP3 Audio Stream
+                               │
+                               └─→ Reproductor del navegador
+                                   │
+                                   └─→ ESCUCHAS EN ESPAÑOL MEXICANO 🔊
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BOTONES DISPONIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔊 Escuchar Orden
+  - Ubicación: CRM Dashboard → Órdenes → Columna Acciones
+  - Función: Lee toda la orden (cliente, trabajo, urgencia)
+  - Tiempo: 30-45 segundos por orden
+  - Idioma: Español mexicano (Dalia voice)
+
+🔊 Escuchar Análisis Gemini
+  - Ubicación: Landing Page → Análisis Gemini
+  - Función: Lee la recomendación técnica de IA
+  - Tiempo: 20-30 segundos
+  - Idioma: Español mexicano
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VOCES DISPONIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Español México (es-MX):
+
+  👩 Dalia (Current)       - Femenina, natural, profesional ⭐
+  👨 Jorge                - Masculino, autoridad
+  👩 Beatriz              - Femenina, más formal
+
+Para cambiar voz, edita butler-azure-tts.js línea 13:
+  speechConfig.speechSynthesisVoiceName = 'es-MX-JorgeNeural';
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRÓXIMOS PASOS (ROADMAP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ COMPLETADO AHORA:
+   ✓ Butler habla órdenes (CRM)
+   ✓ Butler habla Gemini analysis (landing)
+   ✓ Azure TTS integrado
+   ✓ Setup automatizado
+
+⏳ FASE 2 (1-2 semanas):
+   [ ] WhatsApp webhooks con voz
+   [ ] SMS alertas de órdenes urgentes
+   [ ] Notificaciones sonoras en CRM
+
+⏳ FASE 3 (2-3 semanas):
+   [ ] Firma digital en órdenes
+   [ ] PDF con firma + fotos + audio
+   [ ] QR para reproducir orden en campo
+
+⏳ FASE 4 (3-4 semanas):
+   [ ] Speech-to-Text (dictar notas)
+   [ ] Órdenes automáticas por voz
+   [ ] Transcripción de consultas
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿LISTO PARA EMPEZAR?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN 1 (FÁCIL):
+  Doble clic en → butler-voice-setup.bat
+
+OPCIÓN 2 (MANUAL):
+  Sigue OPCIÓN 2 arriba (pasos 1-5)
+
+Luego:
+  - Abre http://localhost:3000 (CRM)
+  - Haz clic en botón 🔊
+  - ¡Escucha a Butler hablar! 🗣️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                ¡BUTLER ESTÁ LISTO PARA HABLAR! 🔊
+                      ¡A TRABAJAR, WEY! 🔧
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,38 @@
+{
+  "SYSTEM_ID": "Ω_EXE_PLOMEROCANCUN_V4",
+  "IDENTITY": {
+    "HANDLES": ["@PLOMEROCANCUN", "@PLUMBERCANCUN", "@PLOMERIACANCUN"],
+    "ALIAS": "Su Servilleta",
+    "TONE": "Elite_Sinister_Maestro",
+    "THEME": "PLATA_Y_NEGRO (#C0C0C0 | #050505)"
+  },
+  "WEB_STRUCTURE": {
+    "UI": "Minimalismo_Hostil",
+    "HERO": "SU INFRAESTRUCTURA SE DEGRADA EN SILENCIO. ¿Quiere arreglarlo o quiere esperar?",
+    "UX_FX": "Metallic_Glint_CSS",
+    "DOUBT_PROTOCOL": [
+      "¿Confía en el 'maestrito'?",
+      "¿Sabe cuánta presión tiene su cisterna?",
+      "El sarro de Cancún no perdona."
+    ]
+  },
+  "GATEKEEPER_LOGIC": {
+    "BLACK_LIST": ["barato", "cuanto es lo menos", "primo", "amigo", "descuento", "presupuesto gratis"],
+    "REJECTION_CMD": "FUCK_OFF_CON_CLASE",
+    "AUTO_RESPONSE": "Mi metodología no contempla ajustes presupuestarios. Le sugiero opciones alineadas a su capacidad de costo. Suerte.",
+    "ACTION": "AUTO_ARCHIVE_TRASH"
+  },
+  "N8N_BACKEND": {
+    "NODES": ["FB_SCRAPER", "LINGUO_FILTER", "AKASHIC_ZIP", "EXEC_SHIP"],
+    "LINGUO_VERITAS": ["Sarro", "Chamba de Élite", "Cisterna", "Ponerse la del Puebla", "Al Tiro"],
+    "RULE": "Si pensaste en algo >3 veces, automatízalo."
+  },
+  "RHETORIC_STRAT": {
+    "ALPHA": "Yo soy el premio, ellos el supplicante.",
+    "BETA": "Scarcity = El tiempo es plata, y la plata es mía.",
+    "GAMMA": "Exclusividad = No atiendo emergencias de gente que ignora el mantenimiento."
+  },
+  "CSS_GLINT_INJECT": ".silver-glint { background: linear-gradient(to right, #4d4d4d 0%, #d9d9d9 10%, #4d4d4d 20%); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite linear; }",
+  "SUCCESS_METRIC": "VELOCIDAD > PERFECCIÓN | DONE > PERFECT",
+  "SIGNATURE": "EST. 2026 | DOMINANCE ASSURED | NO PAUSE BETWEEN KNOWING AND EXECUTING"
+}

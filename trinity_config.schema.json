@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Trinity Engineering Configuration",
+  "description": "System-core configuration for TRINITY_ENG|v3.0 operational hierarchy",
+  "type": "object",
+  "required": ["SYSTEM_CORE"],
+  "properties": {
+    "SYSTEM_CORE": {
+      "type": "object",
+      "required": ["ID", "OBJECTIVE", "HIERARCHY", "PROTOCOLS"],
+      "properties": {
+        "ID": {
+          "type": "string",
+          "pattern": "^TRINITY_ENG\\|v\\d+\\.\\d+$",
+          "description": "System identifier and version"
+        },
+        "OBJECTIVE": {
+          "type": "string",
+          "description": "Primary optimization goals"
+        },
+        "HIERARCHY": {
+          "type": "object",
+          "required": ["TIER_1_STRATEGY", "TIER_2_ARCHITECT", "TIER_3_EXECUTION"],
+          "properties": {
+            "TIER_1_STRATEGY": {
+              "type": "object",
+              "required": ["ID", "ROLE", "INPUT", "OUTPUT", "MODE"],
+              "properties": {
+                "ID": { "type": "string" },
+                "ROLE": { "type": "string" },
+                "INPUT": { "type": "string" },
+                "OUTPUT": { "type": "string" },
+                "MODE": { "type": "string" }
+              }
+            },
+            "TIER_2_ARCHITECT": {
+              "type": "object",
+              "required": ["ID", "ROLE", "INPUT", "OUTPUT", "CONSTRAINT"],
+              "properties": {
+                "ID": { "type": "string" },
+                "ROLE": { "type": "string" },
+                "INPUT": { "type": "string" },
+                "OUTPUT": { "type": "string" },
+                "CONSTRAINT": { "type": "string" }
+              }
+            },
+            "TIER_3_EXECUTION": {
+              "type": "object",
+              "required": ["ID", "ROLE", "INPUT", "OUTPUT", "LIMITS"],
+              "properties": {
+                "ID": { "type": "string" },
+                "ROLE": { "type": "string" },
+                "INPUT": { "type": "string" },
+                "OUTPUT": { "type": "string" },
+                "LIMITS": { "type": "string" }
+              }
+            }
+          }
+        },
+        "PROTOCOLS": {
+          "type": "object",
+          "required": ["TOKEN_ECONOMY", "QUALITY_GATE", "MEMORY_MGT"],
+          "properties": {
+            "TOKEN_ECONOMY": {
+              "type": "object",
+              "properties": {
+                "COMPRESSION": { "type": "string", "enum": ["TRUE", "FALSE"] },
+                "STYLE": { "type": "string" },
+                "RESPONSE_FMT": { "type": "string" }
+              }
+            },
+            "QUALITY_GATE": {
+              "type": "object",
+              "properties": {
+                "BEFORE_RUN": { "type": "string" },
+                "AFTER_RUN": { "type": "string" }
+              }
+            },
+            "MEMORY_MGT": {
+              "type": "object",
+              "properties": {
+                "TRIGGER": { "type": "string" },
+                "ACTION": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

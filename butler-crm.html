@@ -1,0 +1,462 @@
+<!-- butler-crm.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Butler CRM — Plomería Cancún</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f5f7fa; font-family: Inter, system-ui, Arial; }
+    .sidebar { background: #2c3e50; color: white; min-height: 100vh; padding: 20px; position: fixed; width: 250px; overflow-y: auto; }
+    .sidebar a { color: #ecf0f1; text-decoration: none; display: block; padding: 10px; margin: 5px 0; border-radius: 4px; }
+    .sidebar a:hover, .sidebar a.active { background: #34495e; color: #fff; }
+    .main { margin-left: 250px; padding: 20px; }
+    .card { box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: none; margin-bottom: 20px; }
+    .badge-alta { background: #e74c3c; }
+    .badge-normal { background: #f39c12; }
+    .badge-baja { background: #27ae60; }
+    .status-completed { background: #27ae60; color: white; padding: 3px 8px; border-radius: 3px; }
+    .status-pending { background: #e74c3c; color: white; padding: 3px 8px; border-radius: 3px; }
+    .table-sm { font-size: 0.9rem; }
+    #chartContainer { height: 300px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3 style="margin-bottom:20px;">⚙️ Su Servilleta™ CRM</h3>
+    <a href="#" onclick="showSection('dashboard')" class="nav-link active">📊 Dashboard</a>
+    <a href="#" onclick="showSection('ordenes')" class="nav-link">📋 Órdenes</a>
+    <a href="#" onclick="showSection('clientes')" class="nav-link">👥 Clientes</a>
+    <a href="#" onclick="showSection('tecnicos')" class="nav-link">🔧 Técnicos</a>
+    <a href="#" onclick="showSection('reportes')" class="nav-link">📈 Reportes</a>
+    <hr style="border-color: #555;">
+    <small style="color: #bdc3c7;">v1.0 | Local Storage | 3 TB capacity</small>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Dashboard -->
+    <div id="dashboard-section" class="section">
+      <h2>📊 Dashboard</h2>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Órdenes Pendientes</h5>
+              <h3 id="pendientes-count">-</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Completadas Hoy</h5>
+              <h3 id="completadas-count">-</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ingresos (Total)</h5>
+              <h3 id="ingresos-total">$-</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tiempo Promedio</h5>
+              <h3 id="tiempo-promedio">- min</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Órdenes Próximas (Urgencia)</h5>
+          <table class="table table-sm table-hover" id="proximas-table">
+            <thead>
+              <tr><th>ID</th><th>Cliente</th><th>Urgencia</th><th>Estado</th><th>Programada</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Órdenes -->
+    <div id="ordenes-section" class="section" style="display:none;">
+      <h2>📋 Órdenes</h2>
+      <button class="btn btn-primary mb-3" onclick="showNewOrdenForm()">+ Nueva Orden</button>
+      
+      <div id="nueva-orden-form" style="display:none;" class="card mb-4">
+        <div class="card-body">
+          <h5>Nueva Orden de Trabajo</h5>
+          <form id="orden-form">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Cliente ID / Teléfono</label>
+                <input type="text" id="orden-cliente" class="form-control" placeholder="ID o telefono">
+              </div>
+              <div class="col-md-6">
+                <label>Descripción Cliente</label>
+                <input type="text" id="orden-desc" class="form-control" placeholder="Ej: Fuga en la cocina">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label>Servicio</label>
+                <select id="orden-servicio" class="form-control">
+                  <option>Reparación de fugas</option>
+                  <option>Cambio de grifería</option>
+                  <option>Destaponamiento</option>
+                  <option>Reparación tubería rota</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label>Urgencia</label>
+                <select id="orden-urgencia" class="form-control">
+                  <option>NORMAL</option>
+                  <option>ALTA</option>
+                  <option>BAJA</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" onclick="crearOrden()" class="btn btn-success mt-3">Crear Orden</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Todas las Órdenes</h5>
+          <div class="mb-2">
+            <button class="btn btn-sm btn-outline-secondary" onclick="filtrarOrdenes('pendiente')">Pendientes</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="filtrarOrdenes('completada')">Completadas</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="filtrarOrdenes('')">Todas</button>
+          </div>
+          <table class="table table-sm table-hover" id="ordenes-table">
+            <thead>
+              <tr><th>ID</th><th>Cliente</th><th>Servicio</th><th>Urgencia</th><th>Estado</th><th>Fecha</th><th>Acciones</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clientes -->
+    <div id="clientes-section" class="section" style="display:none;">
+      <h2>👥 Clientes</h2>
+      <button class="btn btn-primary mb-3" onclick="showNewClienteForm()">+ Nuevo Cliente</button>
+      
+      <div id="nuevo-cliente-form" style="display:none;" class="card mb-4">
+        <div class="card-body">
+          <h5>Nuevo Cliente</h5>
+          <form id="cliente-form">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nombre</label>
+                <input type="text" id="cliente-nombre" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label>Teléfono</label>
+                <input type="text" id="cliente-telefono" class="form-control">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label>Email</label>
+                <input type="email" id="cliente-email" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label>Dirección</label>
+                <input type="text" id="cliente-direccion" class="form-control">
+              </div>
+            </div>
+            <button type="button" onclick="crearCliente()" class="btn btn-success mt-3">Guardar Cliente</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Base de Clientes</h5>
+          <table class="table table-sm table-hover" id="clientes-table">
+            <thead>
+              <tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Ordenes</th><th>Acciones</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Técnicos -->
+    <div id="tecnicos-section" class="section" style="display:none;">
+      <h2>🔧 Técnicos</h2>
+      <button class="btn btn-primary mb-3" onclick="showNewTecnicoForm()">+ Agregar Técnico</button>
+      
+      <div id="nuevo-tecnico-form" style="display:none;" class="card mb-4">
+        <div class="card-body">
+          <h5>Nuevo Técnico</h5>
+          <form id="tecnico-form">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nombre</label>
+                <input type="text" id="tecnico-nombre" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label>Teléfono</label>
+                <input type="text" id="tecnico-telefono" class="form-control">
+              </div>
+            </div>
+            <button type="button" onclick="crearTecnico()" class="btn btn-success mt-3">Agregar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Equipo Técnico</h5>
+          <table class="table table-sm table-hover" id="tecnicos-table">
+            <thead>
+              <tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Órdenes</th><th>Rating</th><th>Estado</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reportes -->
+    <div id="reportes-section" class="section" style="display:none;">
+      <h2>📈 Reportes</h2>
+      <div class="card">
+        <div class="card-body">
+          <h5>Resumen del Período</h5>
+          <table class="table">
+            <tr><td>Pendientes</td><td id="rep-pendientes">-</td></tr>
+            <tr><td>Completadas</td><td id="rep-completadas">-</td></tr>
+            <tr><td>Ingresos Totales</td><td id="rep-ingresos">-</td></tr>
+            <tr><td>Tiempo Promedio</td><td id="rep-tiempo">-</td></tr>
+          </table>
+          <button class="btn btn-sm btn-outline-primary" onclick="exportarCSV()">📥 Exportar a CSV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API = 'http://localhost:3000/api';
+
+    function showSection(name) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(name + '-section').style.display = 'block';
+      document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      if(name === 'dashboard') loadDashboard();
+      if(name === 'ordenes') loadOrdenes();
+      if(name === 'clientes') loadClientes();
+      if(name === 'tecnicos') loadTecnicos();
+      if(name === 'reportes') loadReportes();
+    }
+
+    async function loadDashboard() {
+      const res = await fetch(`${API}/reportes/resumen`).then(r => r.json());
+      document.getElementById('pendientes-count').textContent = res.pendientes || 0;
+      document.getElementById('completadas-count').textContent = res.completadas || 0;
+      document.getElementById('ingresos-total').textContent = `$${res.ingresos_total || 0}`;
+      document.getElementById('tiempo-promedio').textContent = (res.tiempo_promedio_minutos || 0) + ' min';
+      
+      const ordenes = await fetch(`${API}/ordenes?estado=pendiente`).then(r => r.json());
+      const tbody = document.querySelector('#proximas-table tbody');
+      tbody.innerHTML = '';
+      ordenes.slice(0, 5).forEach(o => {
+        tbody.innerHTML += `<tr>
+          <td>#${o.id}</td>
+          <td>${o.nombre || o.cliente_id}</td>
+          <td><span class="badge badge-${o.urgencia.toLowerCase()}">${o.urgencia}</span></td>
+          <td>${o.estado}</td>
+          <td>${o.fecha_programada || '-'}</td>
+        </tr>`;
+      });
+    }
+
+    async function loadOrdenes() {
+      const ordenes = await fetch(`${API}/ordenes`).then(r => r.json());
+      const tbody = document.querySelector('#ordenes-table tbody');
+      tbody.innerHTML = '';
+      ordenes.forEach(o => {
+        tbody.innerHTML += `<tr>
+          <td>#${o.id}</td>
+          <td>${o.nombre || o.cliente_id}</td>
+          <td>${o.servicio_asignado || '-'}</td>
+          <td><span class="badge badge-${o.urgencia.toLowerCase()}">${o.urgencia}</span></td>
+          <td><span class="status-${o.estado}">${o.estado}</span></td>
+          <td>${new Date(o.fecha_creacion).toLocaleDateString()}</td>
+          <td><button class="btn btn-xs btn-outline-info" onclick="editarOrden(${o.id})">Editar</button> <button class="btn btn-xs btn-warning" onclick="escucharOrden(${o.id})" title="Butler lee la orden">🔊</button></td>
+        </tr>`;
+      });
+    }
+
+    async function loadClientes() {
+      const clientes = await fetch(`${API}/clientes`).then(r => r.json());
+      const tbody = document.querySelector('#clientes-table tbody');
+      tbody.innerHTML = '';
+      clientes.forEach(c => {
+        tbody.innerHTML += `<tr>
+          <td>#${c.id}</td>
+          <td>${c.nombre}</td>
+          <td>${c.telefono || '-'}</td>
+          <td>${c.email || '-'}</td>
+          <td>-</td>
+          <td><button class="btn btn-xs btn-outline-info" onclick="verCliente(${c.id})">Ver</button></td>
+        </tr>`;
+      });
+    }
+
+    async function loadTecnicos() {
+      const tecnicos = await fetch(`${API}/tecnicos`).then(r => r.json());
+      const tbody = document.querySelector('#tecnicos-table tbody');
+      tbody.innerHTML = '';
+      tecnicos.forEach(t => {
+        tbody.innerHTML += `<tr>
+          <td>#${t.id}</td>
+          <td>${t.nombre}</td>
+          <td>${t.telefono}</td>
+          <td>${t.ordenes_completadas || 0}</td>
+          <td>${(t.rating_promedio || 0).toFixed(1)} ⭐</td>
+          <td><span class="badge ${t.disponible ? 'bg-success' : 'bg-danger'}">${t.disponible ? 'Disponible' : 'Ocupado'}</span></td>
+        </tr>`;
+      });
+    }
+
+    async function loadReportes() {
+      const res = await fetch(`${API}/reportes/resumen`).then(r => r.json());
+      document.getElementById('rep-pendientes').textContent = res.pendientes;
+      document.getElementById('rep-completadas').textContent = res.completadas;
+      document.getElementById('rep-ingresos').textContent = `$${res.ingresos_total || 0}`;
+      document.getElementById('rep-tiempo').textContent = `${res.tiempo_promedio_minutos || 0} min`;
+    }
+
+    function showNewOrdenForm() {
+      document.getElementById('nueva-orden-form').style.display = 'block';
+    }
+
+    async function crearOrden() {
+      const orden = {
+        cliente_id: parseInt(document.getElementById('orden-cliente').value) || 1,
+        descripcion_cliente: document.getElementById('orden-desc').value,
+        servicio_asignado: document.getElementById('orden-servicio').value,
+        urgencia: document.getElementById('orden-urgencia').value,
+        interpretacion_tecnica: 'Auto-generada',
+        severidad: 1
+      };
+      const res = await fetch(`${API}/ordenes`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(orden)});
+      alert('✓ Orden creada');
+      loadOrdenes();
+    }
+
+    function showNewClienteForm() {
+      document.getElementById('nuevo-cliente-form').style.display = 'block';
+    }
+
+    async function crearCliente() {
+      const cliente = {
+        nombre: document.getElementById('cliente-nombre').value,
+        telefono: document.getElementById('cliente-telefono').value,
+        email: document.getElementById('cliente-email').value,
+        direccion: document.getElementById('cliente-direccion').value
+      };
+      const res = await fetch(`${API}/clientes`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(cliente)});
+      alert('✓ Cliente guardado');
+      loadClientes();
+    }
+
+    function showNewTecnicoForm() {
+      document.getElementById('nuevo-tecnico-form').style.display = 'block';
+    }
+
+    async function crearTecnico() {
+      const tecnico = {
+        nombre: document.getElementById('tecnico-nombre').value,
+        telefono: document.getElementById('tecnico-telefono').value,
+        especialidades: ['fuga', 'goteo', 'tubería rota']
+      };
+      const res = await fetch(`${API}/tecnicos`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(tecnico)});
+      alert('✓ Técnico agregado');
+      loadTecnicos();
+    }
+
+    function exportarCSV() {
+      alert('📥 Función de exporto CSV en desarrollo');
+    }
+
+    function filtrarOrdenes(estado) {
+      console.log('Filter by estado:', estado);
+      loadOrdenes();
+    }
+
+    // 🔊 BUTLER VOICE FUNCTIONS
+    async function escucharOrden(ordenId) {
+      const btn = event.target;
+      btn.disabled = true;
+      btn.textContent = '🔊...';
+      try {
+        const res = await fetch(`${API}/voice/orden/${ordenId}`);
+        if(res.ok) {
+          const data = await res.json();
+          btn.textContent = '✓ Leída';
+          setTimeout(() => { btn.textContent = '🔊'; btn.disabled = false; }, 2000);
+        } else {
+          alert('Voz no disponible. Configura AZURE_SPEECH_KEY');
+          btn.textContent = '🔊';
+          btn.disabled = false;
+        }
+      } catch(e) {
+        alert('Error: ' + e.message);
+        btn.textContent = '🔊';
+        btn.disabled = false;
+      }
+    }
+
+    async function hablarTexto(texto) {
+      try {
+        const res = await fetch(`${API}/voice/speak`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({text: texto})
+        });
+        if(res.ok) {
+          const data = await res.json();
+          console.log('✓ Butler habla:', data.message);
+        }
+      } catch(e) {
+        console.error('Voice error:', e);
+      }
+    }
+
+    async function alertaUrgente(mensaje, urgencia) {
+      try {
+        const res = await fetch(`${API}/voice/alert`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({message: mensaje, urgencia: urgencia})
+        });
+        if(res.ok) console.log('✓ Alerta enviada');
+      } catch(e) {
+        console.error('Alert error:', e);
+      }
+    }
+
+    // Load dashboard on startup
+    loadDashboard();
+  </script>
+</body>
+</html>

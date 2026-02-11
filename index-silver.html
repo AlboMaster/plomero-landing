@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="@PLOMEROCANCUN - #1 Plomería Premium en Cancún. Especialista en desincrustación y destapes garantizados. Suavización/descalcificación, presión, hidroneumáticos, limpieza de tinacos y cisternas. Si no se destapa, no pagas. Desde 2005. +52 998 496 0320" />
+    <meta name="keywords" content="plomería Cancún, desincrustación, destapes, suavización, descalcificación, hidroneumático, presurizadores, limpieza tinacos, cisternas, plomería garantizada" />
+    <meta name="author" content="@PLOMEROCANCUN" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#d4d4d4" />
+    <link rel="canonical" href="https://plomerocancun.com.mx" />
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-C6RzsynM9u94gFlUUU206M0t3GlCWfVfNNIbAAv8JmyBZFxEGhPOkPRKgM4qWoXn" crossorigin="anonymous">
+    
+    <!-- Tailwind CSS 3.x -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'plata': '#d4d4d4',
+              'plata-light': '#f0f0f0',
+              'bg-dark': '#0a0a0a',
+              'bg-darker': '#050505'
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      :root{
+        --plateado: #a8a8a8;
+        --plateado-bright: #a8a8a8;
+        --plateado-mid: #b8b8b8;
+        --plateado-dark: #929292;
+        --plateado-accent: rgba(220,220,220,.85);
+        --plateado-spec: linear-gradient(120deg, #a8a8a8 0%, #b8b8b8 10%, #b0b0b0 40%, #989898 65%, #888888 100%);
+      }
+
+      @keyframes rotateSilver { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 12px rgba(255,255,255,.85), inset 0 0 6px rgba(255,255,255,.45), 0 0 30px rgba(200,200,200,.35); } 50% { box-shadow: 0 0 22px rgba(255,255,255,.95), inset 0 0 10px rgba(255,255,255,.6), 0 0 50px rgba(200,200,200,.48); } }
+      @keyframes glowPulse { 0%, 100% { text-shadow: 0 1px 0 rgba(255,255,255,1), 0 4px 12px rgba(0,0,0,.6), 0 0 18px rgba(200,200,200,.45); filter: drop-shadow(0 0 10px rgba(255,255,255,.35)); } 50% { text-shadow: 0 1px 0 rgba(255,255,255,1), 0 6px 18px rgba(0,0,0,.7), 0 0 28px rgba(200,200,200,.55); filter: drop-shadow(0 0 18px rgba(255,255,255,.45)); } }
+
+      .shimmer { position: relative; overflow: visible; }
+      .shimmer::after { content: ''; position: absolute; inset: -8% -4%; background-image: radial-gradient(circle at 12% 12%, rgba(255,255,255,.75) 0%, rgba(255,255,255,0) 22%), linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,0)); mix-blend-mode: overlay; pointer-events: none; opacity: .9; animation: pulseGlow 3.6s ease-in-out infinite; }
+
+      .shining-title { color: var(--plateado-bright); text-shadow: 0 1px 0 rgba(255,255,255,1), 0 6px 18px rgba(0,0,0,.65), 0 0 18px rgba(200,200,200,.45); animation: glowPulse 3s ease-in-out infinite; }
+      .shining-heading { color: var(--plateado); text-shadow: 0 1px 0 rgba(255,255,255,.98), 0 4px 12px rgba(0,0,0,.55); }
+
+      body { background: #000000 !important; color: #bfbfbf; }
+      .silver-text { color: #bfbfbf; text-shadow: 0 1px 0 rgba(255,255,255,.95), 0 2px 8px rgba(0,0,0,.8); animation: glowPulse 4s ease-in-out infinite; }
+      p, .text-gray-300, .text-gray-400 { color: #bfbfbf !important; text-shadow: 0 1px 0 rgba(255,255,255,.92); }
+      a { color: #d4d4d4; text-decoration: none; transition: all 0.2s; }
+      a:hover { color: #d4d4d4; text-shadow: 0 0 10px rgba(191,191,191,.65); }
+
+      .lang-btn { transition: all 0.18s; box-shadow: 0 0 8px rgba(255,255,255,.06); border-radius: 10px; }
+      .lang-btn.active { background-color: var(--plateado-bright); color:#050505; box-shadow: 0 6px 16px rgba(255,255,255,.25); }
+
+      .es { display: block }
+      .en { display: none }
+      body.lang-en .es { display: none }
+      body.lang-en .en { display: block }
+
+      header { border-bottom-width: 1px !important; border-bottom-style: solid !important; border-bottom-color: rgba(255,255,255,.06) !important; backdrop-filter: blur(6px); }
+
+      .service-card { transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease, border-color .28s ease; border: 1px solid rgba(255,255,255,.06); border-radius: 12px; background-clip: padding-box; }
+      .service-card:hover { border-color: rgba(255,255,255,.12); transform: translateY(-6px); box-shadow: 0 10px 28px rgba(0,0,0,.45), 0 0 28px rgba(255,255,255,.03); }
+      .service-card h4 { text-shadow: none; color: var(--plateado-bright); font-weight:700; }
+
+      .form-input:focus { box-shadow: 0 0 0 3px rgba(255,255,255,.08), 0 0 10px rgba(255,255,255,.12); border-color: var(--plateado-mid); outline: none; }
+
+      html { font-size: 16px; }
+
+      @keyframes shine { to { background-position: 200% center; } }
+      .silver-glint { background: linear-gradient(to right, #4d4d4d 0%, #d9d9d9 10%, #4d4d4d 20%); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite linear; }
+
+      @media (max-width: 768px) { }
+    </style>
+  </head>
+  <body class="bg-black text-gray-100">
+    <!-- Language Toggle -->
+    <div class="lang-toggle fixed top-4 right-4 z-50 flex gap-2">
+      <button class="lang-btn active px-4 py-2 border-2 border-plata text-plata rounded cursor-pointer font-bold text-sm" data-lang="es">ES</button>
+      <button class="lang-btn px-4 py-2 border-2 border-plata text-plata rounded cursor-pointer font-bold text-sm" data-lang="en">EN</button>
+    </div>
+
+    <a class="skip-link" href="#main"><span class="es">Saltar al contenido principal</span><span class="en">Skip to main content</span></a>
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 border-b-2 border-plata backdrop-blur-md" style="background: #000000; box-shadow: 0 10px 40px rgba(191,191,191,.2); border-bottom-color: #d4d4d4;">
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-black" style="color: #bfbfbf; text-shadow: 0 1px 0 rgba(191,191,191,.95), 0 6px 20px rgba(0,0,0,.85), 0 0 25px rgba(168,168,168,.55); animation: glowPulse 3s ease-in-out infinite;">🔧 @PLOMEROCANCUN</h1>
+            <p class="text-xs sm:text-sm font-bold" style="letter-spacing: 0.5px; color: #d4d4d4; text-shadow: 0 1px 0 rgba(255,255,255,.9);">★ #1 ESPECIALISTA PREMIUM • DESINCRUSTACIÓN GARANTIZADA ★</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <a href="tel:+529984960320" class="btn btn-light btn-sm fw-bold d-inline-flex align-items-center flex-column" style="background: #bfbfbf; color: #000000; box-shadow: 0 6px 20px rgba(191,191,191,.3);">
+              <div style="line-height:1">📞</div>
+              <div class="d-none d-sm-block text-start ms-2">
+                <div style="font-weight:700;">Operadora</div>
+                <div class="text-muted" style="font-size:.9rem;">+52 998 496 0320</div>
+              </div>
+            </a>
+            <a href="https://wa.me/529984114839" target="_blank" class="btn btn-outline-light btn-sm fw-bold d-inline-flex align-items-center" style="border: 2px solid #bfbfbf; color: #bfbfbf; box-shadow: 0 6px 20px rgba(191,191,191,.2);">
+              💬 <span class="es">WhatsApp Técnico</span><span class="en">Tech WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="mt-4" role="navigation">
+          <button id="nav-toggle" aria-controls="primary-nav" aria-expanded="false" class="block sm:hidden bg-transparent border-none fw-bold text-2xl cursor-pointer w-8" style="color: #bfbfbf;">☰</button>
+          <ul id="primary-nav" class="hidden sm:flex flex-col sm:flex-row gap-4 list-none p-0 m-0 mt-4 sm:mt-0">
+            <li><a href="#servicios" style="color: #d4d4d4;"><span class="es">Servicios</span><span class="en">Services</span></a></li>
+            <li><a href="#afiliados" style="color: #d4d4d4;"><span class="es">Afiliados</span><span class="en">Affiliates</span></a></li>
+            <li><a href="#contacto" style="color: #d4d4d4;"><span class="es">Contacto</span><span class="en">Contact</span></a></li>
+            <li><a href="#redes" style="color: #d4d4d4;"><span class="es">Redes</span><span class="en">Social</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="relative">
+      <!-- HERO SECTION -->
+      <section class="py-16 sm:py-20 text-center border-b-4 border-plata" style="background: #000000; box-shadow: inset 0 0 80px rgba(0,0,0,1), 0 12px 40px rgba(191,191,191,.15);">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-4xl sm:text-5xl font-black mb-4 uppercase" style="color: #bfbfbf; text-shadow: 0 1px 0 rgba(191,191,191,.95), 0 6px 20px rgba(0,0,0,.85), 0 0 30px rgba(168,168,168,.65); animation: glowPulse 3s ease-in-out infinite;">
+            <span class="es silver-glint">SU INFRAESTRUCTURA SE DEGRADA EN SILENCIO. <br>¿Quiere arreglarlo o quiere esperar?</span>
+            <span class="en">YOUR INFRASTRUCTURE DEGRADES IN SILENCE. <br>Want to fix it or want to wait?</span>
+          </h2>
+          <p class="text-lg mb-8" style="color: #d4d4d4; text-shadow: 0 1px 0 rgba(255,255,255,.9); animation: glowPulse 4s ease-in-out infinite;">
+            <span class="es">Desincrustación de Élite • Sarro • Cisternas • @PLOMEROCANCUN</span>
+            <span class="en">Elite Descaling • Hard Water • Cisterns • @PLOMEROCANCUN</span>
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contacto" class="btn btn-lg fw-bold me-2" role="button" style="background: #bfbfbf; color: #000000; box-shadow: 0 12px 40px rgba(191,191,191,.4); border: none; font-size: 1.15rem; font-weight: 900; padding: 0.9rem 2rem; animation: pulseGlow 2.5s ease-in-out infinite;">
+              📋 <span class="es">SOLICITAR SERVICIO</span><span class="en">REQUEST SERVICE</span>
+            </a>
+            <a href="https://wa.me/529984114839" target="_blank" class="btn btn-lg fw-bold" role="button" style="border: 3px solid #bfbfbf; color: #bfbfbf; background: transparent; box-shadow: 0 8px 30px rgba(191,191,191,.25); font-size: 1.15rem; font-weight: 900; padding: 0.8rem 2rem; animation: pulseGlow 2.8s ease-in-out infinite;">
+              💬 <span class="es">WHATSAPP 24/7</span><span class="en">WHATSAPP 24/7</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CICERONIAN INTERPRETER -->
+      <section id="ciceronize" class="py-12" style="background: linear-gradient(135deg, rgba(14,14,14,.95), rgba(30,30,30,.95)); border-top: 1px solid rgba(212,212,212,.04);">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+          <h3 class="text-3xl font-black shining-heading text-plata mb-4">🖋️ Ciceronian Interpreter — Texto refinado al instante</h3>
+          <p class="text-gray-400 mb-6">
+            <span class="es">Traza lo incomprensible, lo oscuro o lo mal redactado y el intérprete lo convierte en una instrucción técnica clara, sin alterar tus ideas y lista para Su Servilleta.</span>
+            <span class="en">Map the confusing, dark, or poorly phrased note and the interpreter reshapes it into a clear technical directive ready for Su Servilleta.</span>
+          </p>
+
+          <textarea id="cicRaw" rows="6" class="w-full p-3 bg-gray-900 text-gray-100 rounded mb-3" placeholder="Pega texto confuso o informal (WhatsApp, reseña, voz transcrita)..."></textarea>
+          <div class="flex flex-wrap gap-3 justify-center mb-4">
+            <button id="cicBtn" class="btn btn-light px-4 py-2 fw-bold">🛠️ Refinar a Ciceroniano</button>
+            <button id="cicCopy" class="btn btn-outline-light px-4 py-2" disabled>📋 Copiar versión</button>
+            <button id="cicReset" class="btn btn-outline-secondary px-4 py-2">Limpiar</button>
+          </div>
+
+          <div id="cicOutput" class="p-6 bg-gradient-to-r from-bg-darker to-gray-900 text-left text-gray-200 rounded hidden">
+            <h4 class="text-plata font-semibold mb-2">Versión Refinada</h4>
+            <pre id="cicResult" class="whitespace-pre-wrap font-mono text-sm leading-relaxed" style="min-height:120px;"></pre>
+            <div class="mt-4 text-sm text-gray-400" id="cicSummary"></div>
+          </div>
+          <div class="text-sm text-gray-400 mt-4">
+            <span class="es">Usa este texto en publicaciones, respuestas o como prompt para la voz y el motor de Su Servilleta.</span>
+            <span class="en">Drop it into posts, replies, or as a prompt for Su Servilleta's voice & decisioning engine.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SU SERVILLETA AZURE VOICE -->
+      <section id="voz-servilleta" class="py-14" style="background: linear-gradient(135deg, rgba(10,10,10,.9), rgba(24,24,24,.95)); border-top: 1px solid rgba(212,212,212,.08);">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="p-8 border border-plata border-opacity-25 rounded-2xl bg-gradient-to-br from-bg-darker to-gray-900">
+            <h3 class="text-3xl font-black shining-heading text-plata text-center mb-3">
+              <span class="es">🔊 Su Servilleta Voz — Azure desde México</span>
+              <span class="en">🔊 Su Servilleta Voice — Azure from México</span>
+            </h3>
+            <p class="text-center text-gray-400 mb-6">
+              <span class="es">Describe lo que el cliente necesita y escucha cómo Azure Text-to-Speech ofrece la voz mexicana clara, potente y lista para los técnicos.</span>
+              <span class="en">Describe what the customer needs and hear Azure Text-to-Speech render Su Servilleta's Mexican voice—clear, proud, and ready for the field.</span>
+            </p>
+            <textarea id="servilletaVoicePrompt" rows="3" class="w-full px-4 py-3 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input mb-4" placeholder="Redacta la frase que Su Servilleta debe pronunciar al instante..."></textarea>
+            <div class="flex flex-wrap gap-3 justify-center items-center mb-4">
+              <button id="servilletaVoicePlay" class="btn btn-light px-6 py-2 fw-bold">🔊 <span class="es">Escuchar a Su Servilleta</span><span class="en">Play Su Servilleta</span></button>
+              <span id="servilletaVoiceStatus" class="text-sm text-gray-400 text-center w-full sm:w-auto">
+                <span class="es">Requiere AZURE_SPEECH_KEY y región configuradas en el backend.</span>
+                <span class="en">Requires AZURE_SPEECH_KEY + region configured on the backend.</span>
+              </span>
+            </div>
+            <audio id="servilletaVoicePlayer" class="w-full rounded border border-plata border-opacity-40 hidden" controls></audio>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section id="servicios" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+          <h3 class="text-4xl font-black shining-heading text-center mb-4 uppercase" style="color: #bfbfbf;">
+            <span class="es">Nuestros Servicios</span>
+            <span class="en">Our Services</span>
+          </h3>
+          <p class="text-center text-gray-400 mb-12">
+            <span class="es">Líder en mercado desde 2005. Único especialista en desincrustación.</span>
+            <span class="en">Market leader since 2005. Only specialist in pipe descaling.</span>
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="service-card p-6 border border-plata border-opacity-30 rounded-lg cursor-pointer" style="background: linear-gradient(135deg, rgba(20,20,20,.9), rgba(30,30,30,.95));" onclick="selectService('Suavización / Descalcificación')">
+              <div class="text-4xl mb-4">💧</div>
+              <h4 class="text-xl font-bold text-plata mb-3">
+                <span class="es">Suavización / Descalcificación</span>
+                <span class="en">Water Softening</span>
+              </h4>
+              <p class="text-gray-300"><span class="es">Ablandamiento de agua, reducción de minerales, protección de instalaciones.</span><span class="en">Water softening, mineral reduction, installation protection.</span></p>
+            </div>
+
+            <div class="service-card p-6 border border-plata border-opacity-30 rounded-lg cursor-pointer" style="background: linear-gradient(135deg, rgba(20,20,20,.92), rgba(34,34,34,.95));" onclick="selectService('Limpieza Tinacos y Cisternas')">
+              <div class="text-4xl mb-4">🧼</div>
+              <h4 class="text-xl font-bold text-plata mb-3">
+                <span class="es">Limpieza de tinacos</span>
+                <span class="en">Tinaco cleaning</span>
+              </h4>
+              <p class="text-gray-300"><span class="es">Tinacos relucientes desde $800 — sin sarro.</span><span class="en">Polished tinacos from $800 — scale-free.</span></p>
+            </div>
+
+            <div class="service-card p-6 border border-plata border-opacity-30 rounded-lg cursor-pointer" style="background: linear-gradient(135deg, rgba(20,20,20,.95), rgba(40,40,40,.95));" onclick="selectService('Desincrustación de Tuberías Obstruidas / Pipe Descaling')">
+              <div class="text-4xl mb-4">🧼</div>
+              <h4 class="text-xl font-bold text-plata mb-3">
+                <span class="es">Desincrustación Garantizada</span>
+                <span class="en">Guaranteed Descaling</span>
+              </h4>
+              <p class="text-gray-300"><span class="es">Si no se destapa, NO PAGAS. ✓ Especialidad única.</span><span class="en">Doesn't unclog, you don't pay. ✓ Unique Specialty.</span></p>
+              <span class="inline-block mt-3 px-3 py-1 bg-gradient-to-r from-plata to-plata-light text-bg-dark rounded-full text-sm font-bold">⭐ Top Service</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM SECTION -->
+      <section id="contacto" class="py-16" style="background: linear-gradient(135deg, rgba(20,20,20,.95), rgba(38,38,38,.95)); border-top: 1px solid rgba(212,212,212,.2);">
+        <div class="max-w-4xl mx-auto px-4">
+          <h3 class="text-4xl font-black shining-heading text-center mb-4 uppercase" style="color: #bfbfbf;">
+            <span class="es">Solicitud de Servicio</span>
+            <span class="en">Service Request</span>
+          </h3>
+
+          <form id="serviceForm" class="space-y-6">
+            <!-- Contact Info -->
+            <fieldset class="border-2 border-plata border-opacity-30 rounded-lg p-6" style="background: linear-gradient(135deg, rgba(10,10,10,.8), rgba(20,20,20,.8));">
+              <legend class="text-plata font-bold text-lg px-4 pb-3">📋 <span class="es">Información</span><span class="en">Information</span></legend>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                  <label class="block text-plata font-bold mb-2"><span class="es">Nombre</span><span class="en">Name</span> *</label>
+                  <input id="name" type="text" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                </div>
+                <div>
+                  <label class="block text-plata font-bold mb-2"><span class="es">Teléfono</span><span class="en">Phone</span> *</label>
+                  <input id="phone" type="tel" placeholder="+52 998 XXX XXXX" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                </div>
+              </div>
+              <div class="mt-4">
+                <label class="block text-plata font-bold mb-2">Email</label>
+                <input id="email" type="email" class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+              </div>
+            </fieldset>
+
+            <!-- Address Info -->
+            <fieldset class="border-2 border-plata border-opacity-30 rounded-lg p-6" style="background: linear-gradient(135deg, rgba(10,10,10,.8), rgba(20,20,20,.8));">
+              <legend class="text-plata font-bold text-lg px-4 pb-3">📍 <span class="es">Dirección</span><span class="en">Address</span></legend>
+              <input id="street" type="text" placeholder="Calle Principal *" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input mt-4 mb-4" />
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input id="colonia" type="text" placeholder="Colonia *" required class="px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                <input id="postalCode" type="text" placeholder="Código Postal *" required class="px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+              </div>
+            </fieldset>
+
+            <!-- Service & Problem -->
+            <fieldset class="border-2 border-plata border-opacity-30 rounded-lg p-6" style="background: linear-gradient(135deg, rgba(10,10,10,.8), rgba(20,20,20,.8));">
+              <legend class="text-plata font-bold text-lg px-4 pb-3">🔧 <span class="es">Servicio</span><span class="en">Service</span></legend>
+              <select id="service" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input mt-4">
+                <option><span class="es">-- Seleccione --</span></option>
+                <option value="Suavización">🔹 Suavización / Descalcificación</option>
+                <option value="Desincrustación">🧼 Desincrustación ⭐ GARANTIZADO</option>
+                <option value="Limpieza Tinacos">🧼 Limpieza tinacos / cisternas</option>
+                <option value="Otro">❓ Otro</option>
+              </select>
+              <label class="block text-plata font-bold mt-4 mb-2"><span class="es">Descripción</span><span class="en">Description</span></label>
+              <textarea id="description" class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" rows="4" placeholder="Describe el problema..."></textarea>
+            </fieldset>
+
+            <!-- Submit -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button type="submit" class="btn btn-light btn-lg fw-bold flex-1" style="box-shadow: 0 6px 20px rgba(212,212,212,.3);">
+                📤 <span class="es">Enviar</span><span class="en">Submit</span>
+              </button>
+              <a href="https://wa.me/529984114839" target="_blank" class="flex-1 px-6 py-3 border-2 border-plata text-plata font-bold rounded transition hover:bg-gray-800 text-center">
+                💬 WhatsApp
+              </a>
+            </div>
+
+            <div id="formStatus" class="mt-4 p-4 rounded hidden"></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- AFFILIATES SECTION -->
+      <section id="afiliados" class="py-16" style="background: linear-gradient(135deg, rgba(20,20,20,.95), rgba(45,45,45,.95)); border-top: 3px solid #d4d4d4;">
+        <div class="max-w-6xl mx-auto px-4">
+          <h3 class="text-4xl font-black shining-heading text-center mb-4 uppercase" style="color: #bfbfbf;">💰 <span class="es">Programa de Afiliados</span><span class="en">Affiliate Program</span></h3>
+          <p class="text-center text-gray-400 mb-12 text-lg">
+            <span class="es"><strong>Gana 5% de comisión</strong> por cada servicio. Pagos días 2 y 17.</span>
+            <span class="en"><strong>Earn 5% commission</strong> per service. Payments on 2nd & 17th.</span>
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="p-8 border border-2 border-plata border-opacity-50 rounded-lg" style="background: linear-gradient(135deg, rgba(20,20,20,.9), rgba(38,38,38,.9));">
+              <h4 class="text-2xl font-bold text-plata mb-6">📝 <span class="es">Regístrate</span><span class="en">Register</span></h4>
+              <form id="affiliateForm" class="space-y-4">
+                <input id="affName" type="text" placeholder="Tu Nombre" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                <input id="affWhatsApp" type="tel" placeholder="+52 998 XXX XXXX" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                <input id="affEmail" type="email" placeholder="tu@email.com" required class="w-full px-4 py-2 bg-gray-900 border border-plata border-opacity-30 rounded text-gray-100 form-input" />
+                <button type="submit" class="btn btn-light w-100 fw-bold" style="box-shadow: 0 6px 20px rgba(212,212,212,.3);">
+                  🚀 <span class="es">Activar Código</span><span class="en">Activate Code</span>
+                </button>
+                <div id="affiliateStatus" class="mt-4 p-4 rounded hidden"></div>
+              </form>
+            </div>
+
+            <div id="affiliateCodeDisplay" class="p-8 border-2 border-plata rounded-lg hidden" style="background: linear-gradient(135deg, rgba(212,212,212,.1), rgba(212,212,212,.05));">
+              <h4 class="text-2xl font-bold text-plata mb-4 text-center">✅ Código Listo</h4>
+              <div class="bg-bg-dark p-6 border-2 border-dashed border-plata rounded mb-6">
+                <code id="displayAffiliateCode" class="text-2xl font-bold text-plata font-mono">PLOM-XXXX</code>
+              </div>
+              <button onclick="copyToClipboard(document.getElementById('displayAffiliateCode').textContent)" class="btn btn-outline-light px-4 py-2 fw-bold w-100">
+                📋 <span class="es">Copiar</span><span class="en">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL MEDIA SECTION -->
+      <section id="redes" class="py-16" style="background: linear-gradient(135deg, rgba(20,20,20,.95), rgba(30,30,30,.95)); border-top: 1px solid rgba(212,212,212,.1);">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+          <h3 class="text-4xl font-black shining-heading mb-4 uppercase" style="color: #bfbfbf;">
+            <span class="es">Síguenos en Redes</span>
+            <span class="en">Follow Us</span>
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" title="Facebook oficial en revisión" aria-label="Facebook de Su Servilleta" class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-plata to-plata-light text-bg-dark font-bold transition hover:scale-125">f</a>
+            <a href="#" title="Instagram oficial en revisión" aria-label="Instagram de Su Servilleta" class="w-12 h-12 flex items-center justify-center rounded-full text-plata text-xl transition hover:scale-125" style="background: linear-gradient(45deg, #b8b8b8, #a8a8a8, #989898, #888888, #787878);">📷</a>
+            <a href="#" title="WhatsApp oficial en revisión" aria-label="WhatsApp de Su Servilleta" class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-plata to-plata-light text-bg-dark font-bold transition hover:scale-125">💬</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">
+            <span class="es">Enlaces oficiales en revisión; escríbenos para confirmar la dirección correcta.</span>
+            <span class="en">Official links are being refreshed; message us to confirm the accurate URLs.</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t-2 border-plata text-center text-gray-300 py-12" style="background: #000000; box-shadow: 0 -8px 32px rgba(212,212,212,.15);">
+      <div class="max-w-6xl mx-auto px-4 space-y-4">
+        <p><strong class="text-plata">@PLOMEROCANCUN</strong> — <span class="es">Plomería Premium</span><span class="en">Premium Plumbing</span></p>
+        <p>
+          📞 <strong>Operadora:</strong> <a href="tel:+529984960320" class="text-plata hover:text-plata-light">+52 998 496 0320</a> | 
+          💬 <strong>WhatsApp:</strong> <a href="https://wa.me/529984114839" class="text-plata hover:text-plata-light">+52 998 411 4839</a>
+        </p>
+        <p class="text-sm">
+          ✨ <span class="es">Especialista en desincrustación. "Si no se destapa, no pagas." Premium desde 2005.</span>
+          <span class="en">✨ Descaling specialist. "No unclog, no pay." Premium since 2005.</span>
+        </p>
+        <p class="text-xs text-gray-600 border-t border-plata border-opacity-20 pt-4">
+          &copy; <span id="year"></span> <strong>@PLOMEROCANCUN</strong>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS & Service Routing -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="service-routing.js"></script>
+    <script>
+      (function(){
+        const lexicon = {
+          fuck: 'gran inconveniente',
+          shit: 'situación delicada',
+          shitty: 'irregular',
+          bs: 'información poco confiable',
+          crap: 'asunto nebuloso',
+          wtf: 'incertidumbre',
+          damn: 'cuestión crítica',
+          urgent: 'prioritario',
+          asap: 'a la brevedad'
+        };
+
+        const sanitize = (value) => {
+          let cleaned = value || '';
+          cleaned = cleaned.replace(/<[^>]+>/g,'').trim();
+          Object.keys(lexicon).forEach(key => {
+            const regex = new RegExp('\\b' + key + '\\b','gi');
+            cleaned = cleaned.replace(regex, lexicon[key]);
+          });
+          cleaned = cleaned.replace(/([.!?]){2,}/g,'$1');
+          cleaned = cleaned.replace(/\s+/g,' ');
+          return cleaned;
+        };
+
+        const capitalizeSentence = (sentence) => {
+          if (!sentence) return '';
+          return sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase();
+        };
+
+        const buildMessage = (raw, lang) => {
+          const cleaned = sanitize(raw);
+          if (!cleaned) return null;
+          const sentences = cleaned.split(/[.!?]+/).map(s => s.trim()).filter(Boolean);
+          const gist = sentences[0] || cleaned;
+          const tone = lang === 'en' ? 'steady, confident, elevated' : 'sereno, confiable y elevado';
+          const action = sentences.slice(1,3).join('. ') || cleaned;
+          const instruction = lang === 'en'
+            ? `From the message we distill: ${gist}. Recommendation: schedule a technician, confirm availability ${action}.`
+            : `Del mensaje entendemos: ${gist}. Recomendación: agenda a un técnico, confirma disponibilidad ${action}.`;
+          const refined = sentences.map(capitalizeSentence).join('. ') + (sentences.length ? '.' : '');
+
+          const summary = [
+            `${lang === 'en' ? 'Summary' : 'Resumen'}: ${gist}`,
+            `${lang === 'en' ? 'Next step' : 'Próximo paso'}: ${action || 'Pendiente de detalles'}`,
+            `${lang === 'en' ? 'Tone' : 'Tono'}: ${tone}`
+          ];
+
+          return { refined: `${instruction}\n\n${refined}`, summary };
+        };
+
+        const renderOutput = (result) => {
+          const output = document.getElementById('cicOutput');
+          const resultEl = document.getElementById('cicResult');
+          const summaryEl = document.getElementById('cicSummary');
+          const copyBtn = document.getElementById('cicCopy');
+          if (!result) {
+            output.classList.add('hidden');
+            copyBtn.disabled = true;
+            resultEl.textContent = '';
+            summaryEl.textContent = '';
+            return;
+          }
+          output.classList.remove('hidden');
+          resultEl.textContent = result.refined;
+          summaryEl.innerHTML = result.summary.map(line => `<p>• ${line}</p>`).join('');
+          copyBtn.disabled = false;
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const btn = document.getElementById('cicBtn');
+          const copyBtn = document.getElementById('cicCopy');
+          const resetBtn = document.getElementById('cicReset');
+          const textArea = document.getElementById('cicRaw');
+
+          const compute = () => {
+            const lang = document.body.classList.contains('lang-en') ? 'en' : 'es';
+            const text = textArea.value || '';
+            const result = buildMessage(text, lang);
+            renderOutput(result);
+          };
+
+          btn.addEventListener('click', compute);
+          copyBtn.addEventListener('click', () => {
+            const resultEl = document.getElementById('cicResult');
+            if (!resultEl.textContent) return;
+            navigator.clipboard.writeText(resultEl.textContent).then(() => {
+              copyBtn.textContent = '✓ Copiado';
+              setTimeout(() => { copyBtn.textContent = '📋 Copiar versión'; }, 2000);
+            });
+          });
+          resetBtn.addEventListener('click', () => {
+            textArea.value = '';
+            renderOutput(null);
+          });
+        });
+      })();
+    </script>
+    
+    <script>
+      // ===== INIT =====
+      function init() {
+        initLanguage();
+        initForm();
+        initAffiliates();
+        initVoiceWidget();
+        initNav();
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+
+      // ===== LANGUAGE TOGGLE =====
+      function initLanguage() {
+        const langBtns = document.querySelectorAll('.lang-btn');
+        langBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            document.body.classList.remove('lang-en', 'lang-es');
+            if (lang === 'en') {
+              document.body.classList.add('lang-en');
+            }
+            langBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            localStorage.setItem('plomerocancun_lang', lang);
+          });
+        });
+        
+        const savedLang = localStorage.getItem('plomerocancun_lang') || 'es';
+        if (savedLang === 'en') {
+          document.body.classList.add('lang-en');
+          document.querySelectorAll('[data-lang="en"]')[0].classList.add('active');
+          document.querySelectorAll('[data-lang="es"]')[0].classList.remove('active');
+        }
+      }
+
+      // ===== FORM HANDLING =====
+      function initForm() {
+        const form = document.getElementById('serviceForm');
+        if (!form) return;
+        
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = {
+            timestamp: new Date().toISOString(),
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value || null,
+            street: document.getElementById('street').value,
+            colonia: document.getElementById('colonia').value,
+            postalCode: document.getElementById('postalCode').value,
+            address: `${document.getElementById('street').value}, ${document.getElementById('colonia').value}`,
+            service: document.getElementById('service').value,
+            description: document.getElementById('description').value || null,
+            source: 'website-form'
+          };
+          
+          // Save to local storage
+          const leads = JSON.parse(localStorage.getItem('plomerocancun_leads') || '[]');
+          leads.push(formData);
+          localStorage.setItem('plomerocancun_leads', JSON.stringify(leads));
+          
+          // Send to API
+          try {
+            const apiBase = window.API_BASE || '/api';
+            const response = await fetch(`${apiBase}/leads`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+              const result = await response.json();
+              formData.id = result.leadId;
+              console.log('✓ Lead sent to API:', result.leadId);
+            } else if (response.status === 403) {
+              const result = await response.json();
+              const status = document.getElementById('formStatus');
+              status.textContent = result.message || 'Solicitud rechazada.';
+              status.classList.remove('hidden');
+              status.style.background = 'linear-gradient(135deg, #c0392b, #e74c3c)';
+              status.style.color = '#fff';
+              return;
+            }
+          } catch (error) {
+            console.warn('⚠️ API failed, using local storage:', error.message);
+          }
+          
+          // Show success message
+          const status = document.getElementById('formStatus');
+          const lang = document.body.classList.contains('lang-en') ? 'en' : 'es';
+          status.textContent = lang === 'en' ? '✅ Request received! Check your email.' : '✅ ¡Solicitud recibida! Revisa tu email.';
+          status.classList.remove('hidden');
+          status.classList.add('block');
+          status.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+          status.style.color = '#fff';
+          
+          form.reset();
+          
+          setTimeout(() => {
+            window.location.href = '#contacto';
+          }, 2000);
+        });
+      }
+
+      // ===== AFFILIATES =====
+      function initAffiliates() {
+        const form = document.getElementById('affiliateForm');
+        if (!form) return;
+        
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const affiliateCode = 'PLOM-' + Math.random().toString(36).substr(2, 4).toUpperCase() + '-' + Date.now().toString(36).toUpperCase();
+          
+          const affiliateData = {
+            name: document.getElementById('affName').value,
+            whatsapp: document.getElementById('affWhatsApp').value,
+            email: document.getElementById('affEmail').value,
+            code: affiliateCode
+          };
+          
+          // Try API first
+          try {
+            const apiBase = window.API_BASE || '/api';
+            const response = await fetch(`${apiBase}/affiliates`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(affiliateData)
+            });
+            
+            if (response.ok) {
+              const result = await response.json();
+              document.getElementById('displayAffiliateCode').textContent = result.code;
+            }
+          } catch (error) {
+            console.warn('⚠️ API failed:', error);
+            document.getElementById('displayAffiliateCode').textContent = affiliateCode;
+          }
+          
+          // Save locally
+          const affiliates = JSON.parse(localStorage.getItem('plomerocancun_affiliates') || '[]');
+          affiliates.push(affiliateData);
+          localStorage.setItem('plomerocancun_affiliates', JSON.stringify(affiliates));
+          
+          // Show code
+          document.getElementById('affiliateCodeDisplay').classList.remove('hidden');
+          form.reset();
+        });
+      }
+
+      // ===== SU SERVILLETA VOICE WIDGET =====
+      function initVoiceWidget() {
+        const playBtn = document.getElementById('servilletaVoicePlay');
+        const status = document.getElementById('servilletaVoiceStatus');
+        const audio = document.getElementById('servilletaVoicePlayer');
+        const prompt = document.getElementById('servilletaVoicePrompt');
+        if (!playBtn || !status) return;
+
+        const getLocalized = (payload) => {
+          if (typeof payload === 'string') return payload;
+          return document.body.classList.contains('lang-en') ? payload.en : payload.es;
+        };
+
+        const setStatus = (payload, isError = false) => {
+          status.textContent = getLocalized(payload);
+          status.classList.toggle('text-red-400', Boolean(isError));
+          status.classList.toggle('text-gray-400', !isError);
+        };
+
+        playBtn.addEventListener('click', async () => {
+          const fallback = document.body.classList.contains('lang-en')
+            ? 'Su Servilleta, share the customer need and I will turn it into a field-ready note.'
+            : 'Su Servilleta, dime qué necesita el cliente y lo convierto en una orden lista para el técnico.';
+          const text = (prompt && prompt.value.trim()) ? prompt.value.trim() : fallback;
+          setStatus({ es: 'Conectando a Azure Speech Services...', en: 'Connecting to Azure Speech Services...' });
+          playBtn.disabled = true;
+
+          try {
+            const apiBase = window.API_BASE || '/api';
+            const response = await fetch(`${apiBase}/servilleta-voice`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text })
+            });
+            const payload = await response.json();
+
+            if (!response.ok || !payload.success) {
+              throw new Error(payload.error || 'Azure voice no disponible');
+            }
+
+            audio.src = `data:audio/mp3;base64,${payload.audioBase64}`;
+            audio.classList.remove('hidden');
+            await audio.play().catch(() => {});
+            setStatus({ es: 'Su Servilleta habla en español mexicano.', en: 'Su Servilleta just spoke in Mexican Spanish.' });
+          } catch (error) {
+            setStatus({ es: `No se pudo reproducir la voz: ${error.message}`, en: `Unable to play voice: ${error.message}` }, true);
+          } finally {
+            playBtn.disabled = false;
+          }
+        });
+      }
+
+      // ===== NAV TOGGLE =====
+      function initNav() {
+        const toggle = document.getElementById('nav-toggle');
+        const nav = document.getElementById('primary-nav');
+        if (!toggle || !nav) return;
+        
+        toggle.addEventListener('click', function() {
+          nav.classList.toggle('hidden');
+        });
+      }
+
+      // ===== SELECT SERVICE =====
+      function selectService(serviceName) {
+        document.getElementById('service').value = serviceName;
+        document.getElementById('name').focus();
+        document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // ===== COPY CLIPBOARD =====
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(document.body.classList.contains('lang-en') ? '✓ Copied!' : '✓ ¡Copiado!');
+        }).catch(err => {
+          alert(document.body.classList.contains('lang-en') ? 'Copy failed' : 'Error al copiar');
+        });
+      }
+
+      // ===== RUN ON READY =====
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    </script>
+  </body>
+</html>
